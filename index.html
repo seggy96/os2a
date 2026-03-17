@@ -94,10 +94,11 @@ body {
 .slide-container .slide-title {
   font-size: 40px;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-align: left;
   width: 100%;
   color: #38bdf8;
+  flex-shrink: 0;
 }
 
 .slide-container h3 {
@@ -121,6 +122,7 @@ body {
   flex-grow: 1;
   justify-content: center;
   width: 100%;
+  max-height: 100%;
 }
 
 /* ODRÁŽKOVÉ SEZNAMY */
@@ -243,30 +245,43 @@ ul.sub-list li::before {
 .qa-layout p { font-size: 24px; }
 .qa-layout .contact-info { color: #94a3b8; font-size: 20px; margin-top: 50px; }
 
-/* ZÁSTUPNÉ BLOKY PRO OBRÁZKY (IMAGE PLACEHOLDERS) */
-.image-placeholder {
-    width: 100%;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #1e293b;
-    color: #94a3b8;
-    font-size: 22px;
-    font-weight: 600;
-    font-style: italic;
-    border: 2px dashed #334155;
-    border-radius: 12px;
-    text-align: center;
-    padding: 20px;
+/* ZÁSTUPNÉ BLOKY PRO OBRÁZKY A NORMALIZACE OBRAZŮ */
+.image-wrapper {
+  border-radius: 12px;
+  height: 380px;
+  max-width: 100%;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid #334155;
+  background-color: #1e293b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.rounded-image-layout .image-placeholder {
+.image-wrapper img {
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.two-column .image-wrapper img { object-fit: contain; }
+
+.rounded-image-layout .image-wrapper {
     border-radius: 50%;
-    width: 400px;
-    height: 400px;
+    width: 320px;
+    height: 320px;
+    max-width: 320px;
     margin: 0 auto;
     border: 4px solid #334155;
+    overflow: hidden;
+}
+
+.rounded-image-layout .image-wrapper img {
+    object-fit: cover;
+    max-width: 320px;
+    height: 100%;
 }
 
 .rounded-image-layout.two-column { align-items: center; }
@@ -276,12 +291,7 @@ ul.sub-list li::before {
 .slide-container.bleed-image-layout > .content-container { padding: 60px 0 60px 60px; }
 .slide-container.bleed-image-layout > .image-container { height: 100%; overflow: hidden; width: 100%; display: flex; align-items: center; justify-content: center; background-color: #1e293b; border-radius: 0 8px 8px 0;}
 .slide-container.bleed-image-layout .bleed-text-side { display: flex; flex-direction: column; justify-content: center; height: 100%; }
-.slide-container.bleed-image-layout .image-placeholder {
-    border-radius: 0 8px 8px 0;
-    height: 720px;
-    border: none;
-    border-left: 2px dashed #334155;
-}
+.slide-container.bleed-image-layout img.bleed-image-side { display: block; height: 720px; object-fit: cover; object-position: center; width: 100%; }
 
 /* OVLÁDACÍ PRVKY */
 .controls {
@@ -497,13 +507,13 @@ ul.sub-list li::before {
         <div class="content-area">
             <div class="bleed-text-side">
                 <h3>Princip paketového přenosu</h3>
-                <ul class="professional-list">
+                <ul class="professional-list small-text">
                     <li>Data (např. video z irského datacentra) jsou dělena na pakety.</li>
                     <li>Pakety putují <strong>samostatně a různými trasami</strong>.</li>
                     <li>V cíli se podle TCP/IP seřadí do identického souboru.</li>
                 </ul>
-                <h3 style="margin-top: 30px;">Decentralizace sítě</h3>
-                <ul class="professional-list">
+                <h3 style="margin-top: 20px;">Decentralizace sítě</h3>
+                <ul class="professional-list small-text">
                     <li>Síť <strong>nemá začátek ani konec</strong>.</li>
                     <li>Funguje na principu sdílených veřejných propojovacích bodů po celém světě.</li>
                     <li><strong>Neexistuje červené tlačítko "Internet STOP"</strong>. Při výpadku pražského serveru data automaticky doputují jinou cestou.</li>
@@ -736,7 +746,7 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Network_switch_and_patch_panel.jpg/1024px-Network_switch_and_patch_panel.jpg" alt="Síťový přepínač Switch">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Síťový přepínač Switch">
                 </div>
             </div>
         </div>
@@ -760,7 +770,7 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Server_Rack.jpg/800px-Server_Rack.jpg" alt="Server v racku DHCP">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="Server v racku DHCP">
                 </div>
             </div>
         </div>
@@ -772,10 +782,6 @@ ul.sub-list li::before {
     <div class="qa-layout">
         <h2>Závěr a dotazy</h2>
         <p>Ať už řešíme fyzickou vrstvu nebo logické přidělování IP adres, základní principy sítě zůstávají nezměněny.</p>
-        <p>Nyní je prostor pro vaše technické dotazy a případnou Troubleshooting poradnu.</p>
-        <div class="contact-info">
-            Fakulta informačních technologií | Katedra počítačových sítí
-        </div>
     </div>
 </div>
 
@@ -842,4 +848,3 @@ ul.sub-list li::before {
 </script>
 </body>
 </html>
-```
