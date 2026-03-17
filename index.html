@@ -1,1 +1,845 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historie Sítí a Cisco Packet Tracer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* ZÁKLADNÍ NASTAVENÍ A RESET */
+* { box-sizing: border-box; }
 
+p { margin: 0; margin-bottom: 15px; }
+
+body {
+  background-color: #020617;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* KONTEJNER PRO SLAJDY */
+.slide-container {
+  align-items: center;
+  background-color: #0f172a;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Lato', sans-serif;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: absolute;
+  width: 1280px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.98);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-container.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  z-index: 10;
+}
+
+.slide-container::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 50%);
+}
+
+.slide-container > * { position: relative; z-index: 1; }
+
+/* TYPOGRAFIE A BARVY */
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #f8fafc;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container .number-label {
+  color: #cbd5e1;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.slide-container h1 {
+  font-size: 70px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.slide-container .slide-title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  color: #38bdf8;
+}
+
+.slide-container h3 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #f8fafc;
+}
+
+.slide-container .subtitle {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 20px auto;
+  color: #94a3b8;
+}
+
+.slide-container .content-area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ODRÁŽKOVÉ SEZNAMY */
+ul.professional-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+ul.professional-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+ul.professional-list li::before {
+  content: "■";
+  color: #38bdf8;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 16px;
+}
+
+ul.professional-list li strong {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+ul.professional-list.small-text li {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+ul.sub-list {
+  list-style-type: circle;
+  padding-left: 25px;
+  margin-top: 8px;
+  color: #cbd5e1;
+}
+ul.sub-list li {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+ul.sub-list li::before {
+  content: none;
+}
+
+/* ROZVRŽENÍ (LAYOUTS) */
+.title-layout { text-align: center; max-width: 900px; }
+
+.two-column {
+  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  width: 100%;
+}
+
+.two-column.tiled { align-items: stretch; }
+
+.two-column.tiled > div {
+  background-color: #1e293b;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.two-column.tiled h3 { color: #38bdf8; margin-bottom: 25px; }
+
+.tiled-content {
+  align-items: stretch;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.tile {
+  background-color: #1e293b;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 30px;
+  text-align: left;
+}
+
+.tile .icon {
+  color: #38bdf8;
+  font-size: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.tile h3 { font-size: 24px; text-align: center; }
+
+.bullet-list { max-width: 900px; width: 100%; }
+.bullet-list ul { list-style: none; margin: 0; padding: 0; }
+.bullet-list li { gap: 15px; margin-bottom: 20px; padding-left: 50px; position: relative; font-size: 18px; }
+.bullet-list i { color: #38bdf8; font-size: 28px; left: 0; margin-top: 2px; position: absolute; text-align: center; top: 0; }
+.bullet-list li strong { color: #f8fafc; font-weight: 700; }
+
+.highlight-numbers-layout > div:first-child { flex: 0 0 45%; text-align: center; }
+.highlight-numbers-layout .number { color: #38bdf8; font-size: 45px; font-weight: 700; font-family: 'Poppins', sans-serif; line-height: 1.1; margin-bottom: 5px; }
+.highlight-numbers-layout .number-label { font-size: 20px; font-weight: 700; color: #f8fafc; }
+
+.section-title-layout { align-items: center; display: flex; flex-direction: column; height: 100%; justify-content: center; text-align: center; width: 100%; }
+.section-title-layout h2 { font-size: 60px; margin-bottom: 20px; }
+.section-title-layout p { font-size: 24px; margin: 0 auto; max-width: 800px; }
+.section-title-layout hr { background-color: #38bdf8; border: none; height: 5px; margin: 30px auto; width: 120px; }
+
+.qa-layout { margin: 0 auto; text-align: center; width: 100%; align-self: center; }
+.qa-layout h2 { font-size: 80px; margin-bottom: 20px; }
+.qa-layout p { font-size: 24px; }
+.qa-layout .contact-info { color: #94a3b8; font-size: 20px; margin-top: 50px; }
+
+/* ZÁSTUPNÉ BLOKY PRO OBRÁZKY (IMAGE PLACEHOLDERS) */
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e293b;
+    color: #94a3b8;
+    font-size: 22px;
+    font-weight: 600;
+    font-style: italic;
+    border: 2px dashed #334155;
+    border-radius: 12px;
+    text-align: center;
+    padding: 20px;
+}
+
+.rounded-image-layout .image-placeholder {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    border: 4px solid #334155;
+}
+
+.rounded-image-layout.two-column { align-items: center; }
+
+/* Bleed Image Layout Override */
+.slide-container.bleed-image-layout { align-items: start; display: grid; gap: 50px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; }
+.slide-container.bleed-image-layout > .content-container { padding: 60px 0 60px 60px; }
+.slide-container.bleed-image-layout > .image-container { height: 100%; overflow: hidden; width: 100%; display: flex; align-items: center; justify-content: center; background-color: #1e293b; border-radius: 0 8px 8px 0;}
+.slide-container.bleed-image-layout .bleed-text-side { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+.slide-container.bleed-image-layout .image-placeholder {
+    border-radius: 0 8px 8px 0;
+    height: 720px;
+    border: none;
+    border-left: 2px dashed #334155;
+}
+
+/* OVLÁDACÍ PRVKY */
+.controls {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+    background: rgba(15, 23, 42, 0.8);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn {
+    background: transparent;
+    color: #f8fafc;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 5px 10px;
+}
+
+.nav-btn:hover:not(:disabled) {
+    color: #38bdf8;
+}
+
+.nav-btn:disabled {
+    color: #475569;
+    cursor: not-allowed;
+}
+
+.slide-counter {
+    color: #cbd5e1;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 60px;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title_Slide -->
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>Historie a Architektura Sítě Internet</h1>
+        <p class="subtitle">Od studené války přes fyziku optiky až po praktická cvičení topologií v Cisco Packet Tracer.</p>
+    </div>
+</div>
+
+<!-- Slide 2: Section_Title -->
+<div class="slide-container" id="slide2">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Zrod globální sítě</h2>
+        <p>Studená válka, vznik prvních decentralizovaných topologií a standardizace síťových protokolů.</p>
+    </div>
+</div>
+
+<!-- Slide 3: Bleed_Image_Right -->
+<div class="slide-container bleed-image-layout" id="slide3">
+    <div class="content-container">
+        <h2 class="slide-title">Studená válka a ARPA</h2>
+        <div class="content-area">
+            <div class="bleed-text-side">
+                <h3>Vesmírné závody (1957)</h3>
+                <ul class="professional-list">
+                    <li>Vypuštění umělé družice <strong>Sputnik 1</strong> Sovětským svazem.</li>
+                    <li>Riziko vojenského a technologického zaostávání USA.</li>
+                </ul>
+                <h3 style="margin-top: 30px;">Založení agentury ARPA (1958)</h3>
+                <ul class="professional-list">
+                    <li>Zřízena Ministerstvem obrany USA.</li>
+                    <li><strong>Cíl:</strong> Podpora výzkumu převratných technologií.</li>
+                    <li>Vznik programátorských týmů na univerzitách.</li>
+                    <li><strong>Kritický požadavek:</strong> Decentralizovaná síť schopná přežít jaderný útok.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1000&q=80" alt="Země a vesmír">
+    </div>
+</div>
+
+<!-- Slide 4: Two_Column_Tiled_Text -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Zrození sítě ARPANET</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3>Revoluční tendr (1968)</h3>
+                <ul class="professional-list">
+                    <li>ARPA vypsala tendr na novou formu výměny informací.</li>
+                    <li>Vítězství: <strong>Tým C. R. Licklidera</strong> z bostonské společnosti BBN.</li>
+                    <li>Zavedení konceptu <strong>paketových sítí</strong>.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Expanze sítě (1969 - 1973)</h3>
+                <ul class="professional-list">
+                    <li><strong>První uzly:</strong> Utah, Santa Barbara, Stanford, Los Angeles a Boston.</li>
+                    <li>Rozšíření na desítky institucí v USA.</li>
+                    <li><strong>1973 - Propojení s Evropou:</strong> 
+                        <ul class="sub-list">
+                            <li>University College (Velká Británie).</li>
+                            <li>Seismologický ústav NORSAR (Norsko).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Rounded_Image_and_Text -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Sjednocení a protokol TCP/IP</h2>
+    <div class="content-area">
+        <div class="two-column rounded-image-layout">
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Globální síť">
+                </div>
+            </div>
+            <div>
+                <h3>Bariéra nekompatibility</h3>
+                <ul class="professional-list">
+                    <li>Existovaly další nespolupracující sítě (Cyclades ve Francii, Alohanet na Havaji).</li>
+                </ul>
+                <h3 style="margin-top: 30px;">Řešení otců internetu</h3>
+                <ul class="professional-list">
+                    <li><strong>Bob Kahn a Vint Cerf</strong>.</li>
+                    <li>Vytvořili protokol <strong>TCP/IP</strong>:
+                        <ul class="sub-list">
+                            <li><em>Transmission Control Protocol</em></li>
+                            <li><em>Internet Protocol</em></li>
+                        </ul>
+                    </li>
+                    <li>Schopnost propojit technologicky různorodé sítě do jedné.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Two_Column_Tiled_Text -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">WWW a Internet v ČSFR</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3>Služba World Wide Web</h3>
+                <ul class="professional-list">
+                    <li>Startovní čára pro běžné uživatele (90. léta).</li>
+                    <li>Vynález vědců ze ženevského <strong>CERNu</strong>:
+                        <ul class="sub-list">
+                            <li>Tim Berners-Lee</li>
+                            <li>Robert Cailliau</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>Připojení Československa</h3>
+                <ul class="professional-list">
+                    <li>Na internet jsme si museli počkat.</li>
+                    <li><strong>Rok spuštění: 1992.</strong></li>
+                    <li>Místo: <strong>ČVUT v Praze</strong>.</li>
+                    <li>Konec exkluzivity pouze pro vědecké, vojenské a vládní kruhy.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Two_Column_Tiled_Text -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Co je to vlastně World Wide Web?</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3>Internet vs. Web</h3>
+                <ul class="professional-list">
+                    <li><strong>Internet:</strong> Fyzická infrastruktura, "síťová dálnice" (kabely, optika, routery, servery).</li>
+                    <li><strong>WWW (Web):</strong> Služba běžící <em>nad</em> Internetem. Jsou to "auta a budovy" na této dálnici.</li>
+                    <li>Jde o globální informační prostor postavený na <strong>hypertextu</strong> (propojení dokumentů pomocí odkazů).</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Tři technologické pilíře Webu</h3>
+                <ul class="professional-list">
+                    <li><strong>URL (Uniform Resource Locator):</strong> Unikátní adresa každého dokumentu.</li>
+                    <li><strong>HTTP (Hypertext Transfer Protocol):</strong> Komunikační protokol určující pravidla přenosu dat z Webu.</li>
+                    <li><strong>HTML (Hypertext Markup Language):</strong> Značkovací jazyk dávající stránce obsah a strukturu.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Bleed_Image_Right -->
+<div class="slide-container bleed-image-layout" id="slide8">
+    <div class="content-container">
+        <h2 class="slide-title">Architektura a "Tlačítko STOP"</h2>
+        <div class="content-area">
+            <div class="bleed-text-side">
+                <h3>Princip paketového přenosu</h3>
+                <ul class="professional-list">
+                    <li>Data (např. video z irského datacentra) jsou dělena na pakety.</li>
+                    <li>Pakety putují <strong>samostatně a různými trasami</strong>.</li>
+                    <li>V cíli se podle TCP/IP seřadí do identického souboru.</li>
+                </ul>
+                <h3 style="margin-top: 30px;">Decentralizace sítě</h3>
+                <ul class="professional-list">
+                    <li>Síť <strong>nemá začátek ani konec</strong>.</li>
+                    <li>Funguje na principu sdílených veřejných propojovacích bodů po celém světě.</li>
+                    <li><strong>Neexistuje červené tlačítko "Internet STOP"</strong>. Při výpadku pražského serveru data automaticky doputují jinou cestou.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1000&q=80" alt="Datacentrum a servery">
+    </div>
+</div>
+
+<!-- Slide 9: Highlighted_Numbers -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Doba optická: Hlad po datech</h2>
+    <div class="content-area">
+        <div class="two-column highlight-numbers-layout">
+            <div>
+                <div class="number">10 Gb/s</div>
+                <div class="number-label" style="margin-bottom: 30px;">Metalický kabel (Cat 6, max 50m)</div>
+                <div class="number">144 Tb/s</div>
+                <div class="number-label">Optické vlákno (Transpacifický kabel)</div>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <h3>Počátky optiky (1966)</h3>
+                <ul class="professional-list">
+                    <li>Zveřejnění článku o přenosu informací vlákny z křemenného skla (Charles Kuen Kao, zisk Nobelovy ceny).</li>
+                    <li>Stejné závěry publikoval tým <strong>Ericha Spitze</strong> (francouzský vědec českého původu), ovšem o pár měsíců později.</li>
+                </ul>
+                <h3 style="margin-top: 20px;">Proč vítězí optika?</h3>
+                <ul class="professional-list">
+                    <li>Rychlost vyšší o více než 10 000 násobek.</li>
+                    <li><strong>Nezkresluje signály</strong> při vysokých rychlostech.</li>
+                    <li>Disponuje řádově <strong>menším útlumem</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Bleed_Image_Right -->
+<div class="slide-container bleed-image-layout" id="slide10">
+    <div class="content-container">
+        <h2 class="slide-title">Fyzika optických vláken</h2>
+        <div class="content-area">
+            <div class="bleed-text-side">
+                <h3>Princip úplného odrazu</h3>
+                <ul class="professional-list">
+                    <li>Vlákno se skládá z <strong>jádra a pláště</strong> (rozdílný index lomu).</li>
+                    <li>Optický signál tvořen fotony nemůže z jádra utéci díky jevu úplného odrazu (úhel paprsku menší než 10°).</li>
+                </ul>
+                <h3 style="margin-top: 30px;">Mody a regenerace signálu</h3>
+                <ul class="professional-list">
+                    <li>Aby se zamezilo promíchání bitů na dlouhých cestách, využívá se <strong>jednomodové vlákno</strong> – informace jde jen jednou cestou.</li>
+                    <li>Vyčerpaný signál na trase oživují <strong>optické zesilovače</strong>.</li>
+                    <li>Jsou obohacené o <strong>ionty erbia</strong> a napájené laserovou diodou (zesílí signál 10 000krát).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1000&q=80" alt="Detail optických vláken">
+    </div>
+</div>
+
+<!-- Slide 11: Section_Title -->
+<div class="slide-container" id="slide11">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Laboratoř sítí: Cisco Packet Tracer</h2>
+        <p>Praktická cvičení od jednoduchého spojení po nasazení DHCP a switchů bez drahého hardwaru.</p>
+    </div>
+</div>
+
+<!-- Slide 12: Bleed_Image_Right -->
+<div class="slide-container bleed-image-layout" id="slide12">
+    <div class="content-container">
+        <h2 class="slide-title">Simulační prostředí</h2>
+        <div class="content-area">
+            <div class="bleed-text-side">
+                <h3>Cisco Packet Tracer</h3>
+                <ul class="professional-list">
+                    <li>Oficiální software od společnosti <strong>Cisco</strong> pro návrh, konfiguraci a testování počítačových sítí.</li>
+                    <li>Umožňuje bezpečný návrh a konfiguraci topologií přesně jako v reálném světě.</li>
+                    <li>Odpadá nutnost nákupu drahého fyzického hardwaru pro výuku (např. CCNA certifikace).</li>
+                    <li>Zdarma dostupný po registraci přes akademický portál <strong>NetAcad</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80" alt="Cisco hardware a rack">
+    </div>
+</div>
+
+<!-- Slide 13: Two_Column_Tiled_Text -->
+<div class="slide-container" id="slide13">
+    <h2 class="slide-title">Instalace a rozhraní simulátoru</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3>Stažení softwaru zdarma</h3>
+                <ul class="professional-list">
+                    <li>Dostupný po registraci na <strong>Cisco Networking Academy (NetAcad)</strong>.</li>
+                    <li>Zapište se do kurzu <em>„Getting Started with Cisco Packet Tracer“</em>.</li>
+                    <li>Stáhněte si aplikaci ze sekce 1.0.3 dle vašeho OS. Pokaždé se přihlašujete svým NetAcad účtem.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Hlavní prvky softwaru</h3>
+                <ul class="professional-list">
+                    <li><strong>End Devices:</strong> PC, Laptopy, Servery, Tiskárny.</li>
+                    <li><strong>Network Devices:</strong> Routery, Switche (např. Cisco 2960).</li>
+                    <li><strong>Connections:</strong> Metalické kabely, Optika.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14: Two_Column_Tiled_Text -->
+<div class="slide-container" id="slide14">
+    <h2 class="slide-title">Pravidla výběru kabeláže</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3>Přímý kabel (Straight-Through)</h3>
+                <ul class="professional-list">
+                    <li>Slouží k propojení <strong>odlišných</strong> typů zařízení.</li>
+                    <li><strong>Příklad:</strong> Počítač &harr; Switch, nebo Switch &harr; Router.</li>
+                    <li><em>V Packet Traceru není u koncových zařízení aktivní Auto-MDIX (které dnes běžně opraví kabel samo) – abyste se naučili tento rozdíl!</em></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Křížený kabel (Crossover)</h3>
+                <ul class="professional-list">
+                    <li>Slouží k propojení <strong>stejných</strong> typů zařízení.</li>
+                    <li><strong>Příklad:</strong> Počítač &harr; Počítač, nebo Switch &harr; Switch.</li>
+                    <li>Fyzicky kříží vysílací (Tx) a přijímací (Rx) piny, aby zabránil kolizi dat při přímém spojení.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 15: Image_Right_Text_Left (Cvičení 1) -->
+<div class="slide-container" id="slide15">
+    <h2 class="slide-title">Cvičení 1: Síť Peer-to-Peer</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Základní komunikace dvou PC napřímo bez centrálního prvku.</li>
+                        <li><i class="fa-solid fa-desktop"></i><strong>Krok 1:</strong> Z <em>End Devices</em> vložte na plochu <strong>PC1</strong> a <strong>PC2</strong>.</li>
+                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 2:</strong> Z <em>Connections</em> vyberte <strong>Copper Cross-Over</strong> (křížená dvoulinka).</li>
+                        <li><i class="fa-solid fa-plug"></i><strong>Krok 3:</strong> Propojte oba počítače, vždy do portu <strong>FastEthernet0</strong>. Zelené tečky značí fyzické spojení.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&q=80" alt="Kabeláž a PC">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 16: Highlighted_Numbers -->
+<div class="slide-container" id="slide16">
+    <h2 class="slide-title">Cvičení 1: Nastavení adres a Ping</h2>
+    <div class="content-area">
+        <div class="two-column highlight-numbers-layout">
+            <div>
+                <div class="number">192.168.1.1</div>
+                <div class="number-label">IP pro PC1 (Maska 255.255.255.0)</div>
+                <div class="number" style="margin-top: 50px;">192.168.1.2</div>
+                <div class="number-label">IP pro PC2 (Maska 255.255.255.0)</div>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <h3>Zprovoznění komunikace</h3>
+                <ul class="professional-list">
+                    <li>Klikněte na PC1 &rarr; <em>Desktop &rarr; IP Configuration</em>. Do IPv4 napište IP, maska se doplní. Zopakujte na PC2.</li>
+                    <li><strong>Test konektivity:</strong> Otevřete na PC1 <em>Command Prompt</em> a napište <code>ping 192.168.1.2</code>. Pokud je vše OK, uvidíte 0% packet loss!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 17: Image_Right_Text_Left (Jak funguje Ping a ARP) -->
+<div class="slide-container" id="slide17">
+    <h2 class="slide-title">Co se děje "pod povrchem"?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-eye-slash"></i><strong>Neviditelný krok:</strong> PC1 musí znát MAC (fyzickou) adresu PC2.</li>
+                        <li><i class="fa-solid fa-satellite-dish"></i><strong>ARP Dotaz:</strong> PC1 vyšle broadcast (všem v síti): <em>„Kdo má IP 192.168.1.2?“</em>. Získá MAC adresu a uloží do tabulky.</li>
+                        <li><i class="fa-solid fa-envelope-open-text"></i><strong>ICMP Echo:</strong> Teprve nyní se odesílá samotný Ping!</li>
+                        <li><i class="fa-solid fa-clock"></i><strong>Simulation Mode:</strong> Režim simulátoru v pravém dolním rohu umí zpomalit čas a tyto kroky ukázat jako barevné obálky.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80" alt="Příkazový řádek (ping)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 18: Image_Right_Text_Left (Cvičení 2) -->
+<div class="slide-container" id="slide18">
+    <h2 class="slide-title">Cvičení 2: Hvězdicová topologie</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Naučit se propojit více než dva počítače do jedné sítě pomocí centrálního prvku.</li>
+                        <li><i class="fa-solid fa-network-wired"></i><strong>Krok 1:</strong> Smažte kabel mezi PC1 a PC2. Doprostřed plochy vložte <strong>Switch 2960</strong> a přidejte k němu navíc třetí PC.</li>
+                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 2:</strong> Odlišná zařízení! Použijte přímý kabel (<em>Copper Straight-Through</em>) a zapojte všechny 3 PC do Switche.</li>
+                        <li><i class="fa-solid fa-check"></i><strong>Krok 3:</strong> Přiřaďte PC3 IP adresu <code>192.168.1.3</code> a pingněte si postupně oba předchozí PC!</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Network_switch_and_patch_panel.jpg/1024px-Network_switch_and_patch_panel.jpg" alt="Síťový přepínač Switch">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 19: Image_Right_Text_Left (Cvičení 3) -->
+<div class="slide-container" id="slide19">
+    <h2 class="slide-title">Cvičení 3: Automatizace s DHCP</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Nepřidělovat adresy ručně. Pověřit tím samostatný Server v síti.</li>
+                        <li><i class="fa-solid fa-server"></i><strong>Krok 1:</strong> Vložte na plochu <strong>Server</strong>, připojte ho do Switche a staticky mu dejte IP <code>192.168.1.100</code>.</li>
+                        <li><i class="fa-solid fa-power-off"></i><strong>Krok 2:</strong> Na Serveru běžte na <em>Services &rarr; DHCP</em>. Změňte stav na <strong>ON</strong> a uložte.</li>
+                        <li><i class="fa-solid fa-rotate-right"></i><strong>Krok 3:</strong> Projděte všechna PC a v <em>IP Configuration</em> změňte volbu na <strong>DHCP</strong>. Pokud je vše OK, IP adresu nově počítač získá naprosto automaticky!</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Server_Rack.jpg/800px-Server_Rack.jpg" alt="Server v racku DHCP">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 20: Q&A -->
+<div class="slide-container" id="slide20">
+    <div class="qa-layout">
+        <h2>Závěr a dotazy</h2>
+        <p>Ať už řešíme fyzickou vrstvu nebo logické přidělování IP adres, základní principy sítě zůstávají nezměněny.</p>
+        <p>Nyní je prostor pro vaše technické dotazy a případnou Troubleshooting poradnu.</p>
+        <div class="contact-info">
+            Fakulta informačních technologií | Katedra počítačových sítí
+        </div>
+    </div>
+</div>
+
+<!-- Ovládací prvky -->
+<div class="controls">
+    <button class="nav-btn" id="prevBtn" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="slide-counter"><span id="currentNum">1</span> / <span id="totalNum">20</span></div>
+    <button class="nav-btn" id="nextBtn" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<!-- Javascript -->
+<script>
+    const slides = document.querySelectorAll('.slide-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const currentNum = document.getElementById('currentNum');
+    const totalNum = document.getElementById('totalNum');
+    
+    let currentSlideIndex = 0;
+    const totalSlides = slides.length;
+
+    totalNum.textContent = totalSlides;
+
+    function updateUI() {
+        slides.forEach((slide, index) => {
+            if (index === currentSlideIndex) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        prevBtn.disabled = currentSlideIndex === 0;
+        nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+        currentNum.textContent = currentSlideIndex + 1;
+    }
+
+    function nextSlide() {
+        if (currentSlideIndex < totalSlides - 1) {
+            currentSlideIndex++;
+            updateUI();
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+            updateUI();
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        }
+    });
+
+    // Inicializace prvního slajdu
+    updateUI();
+</script>
+</body>
+</html>
+```
