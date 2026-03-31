@@ -243,9 +243,25 @@ ul.sub-list li::before {
 .qa-layout { margin: 0 auto; text-align: center; width: 100%; align-self: center; }
 .qa-layout h2 { font-size: 80px; margin-bottom: 20px; }
 .qa-layout p { font-size: 24px; }
-.qa-layout .contact-info { color: #94a3b8; font-size: 20px; margin-top: 50px; }
 
 /* ZÁSTUPNÉ BLOKY PRO OBRÁZKY A NORMALIZACE OBRAZŮ */
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+    font-style: italic;
+    border: 2px dashed rgba(56, 189, 248, 0.5);
+    border-radius: 12px;
+    text-align: center;
+    padding: 20px;
+}
+
 .image-wrapper {
   border-radius: 12px;
   height: 380px;
@@ -292,6 +308,7 @@ ul.sub-list li::before {
 .slide-container.bleed-image-layout > .image-container { height: 100%; overflow: hidden; width: 100%; display: flex; align-items: center; justify-content: center; background-color: #1e293b; border-radius: 0 8px 8px 0;}
 .slide-container.bleed-image-layout .bleed-text-side { display: flex; flex-direction: column; justify-content: center; height: 100%; }
 .slide-container.bleed-image-layout img.bleed-image-side { display: block; height: 720px; object-fit: cover; object-position: center; width: 100%; }
+.slide-container.bleed-image-layout .image-placeholder { border-radius: 0 8px 8px 0; height: 720px; border: none; border-left: 2px dashed rgba(56, 189, 248, 0.5); }
 
 /* OVLÁDACÍ PRVKY */
 .controls {
@@ -380,7 +397,7 @@ ul.sub-list li::before {
         </div>
     </div>
     <div class="image-container">
-        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1000&q=80" alt="Země a vesmír">
+        <img class="bleed-image-side" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Sputnik_asm.jpg" onerror="this.src='https://placehold.co/800x800/1e293b/38bdf8?text=Sputnik+1'" alt="Sputnik 1">
     </div>
 </div>
 
@@ -421,7 +438,7 @@ ul.sub-list li::before {
         <div class="two-column rounded-image-layout">
             <div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Globální síť">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Internet_map_1024.png" onerror="this.src='https://placehold.co/600x600/1e293b/38bdf8?text=Mapa+s%C3%ADt%C4%9B'" alt="Globální síť">
                 </div>
             </div>
             <div>
@@ -522,7 +539,7 @@ ul.sub-list li::before {
         </div>
     </div>
     <div class="image-container">
-        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1000&q=80" alt="Datacentrum a servery">
+        <img class="bleed-image-side" src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Wikimedia_Foundation_Servers-8055_35.jpg" onerror="this.src='https://placehold.co/800x800/1e293b/38bdf8?text=Servery'" alt="Server room">
     </div>
 </div>
 
@@ -575,7 +592,7 @@ ul.sub-list li::before {
         </div>
     </div>
     <div class="image-container">
-        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1000&q=80" alt="Detail optických vláken">
+        <img class="bleed-image-side" src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Fiber_optic_illuminated.jpg" onerror="this.src='https://placehold.co/800x800/1e293b/38bdf8?text=Optick%C3%A1+vl%C3%A1kna'" alt="Optické kabely">
     </div>
 </div>
 
@@ -605,7 +622,7 @@ ul.sub-list li::before {
         </div>
     </div>
     <div class="image-container">
-        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80" alt="Cisco hardware a rack">
+        <img class="bleed-image-side" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Network_switch_and_patch_panel.jpg/1024px-Network_switch_and_patch_panel.jpg" onerror="this.src='https://placehold.co/800x800/1e293b/38bdf8?text=Hardware'" alt="Síťování">
     </div>
 </div>
 
@@ -642,6 +659,7 @@ ul.sub-list li::before {
             <div>
                 <h3>Přímý kabel (Straight-Through)</h3>
                 <ul class="professional-list">
+                    <li><strong>Ikona v menu:</strong> Plná černá čára.</li>
                     <li>Slouží k propojení <strong>odlišných</strong> typů zařízení.</li>
                     <li><strong>Příklad:</strong> Počítač &harr; Switch, nebo Switch &harr; Router.</li>
                     <li><em>V Packet Traceru není u koncových zařízení aktivní Auto-MDIX (které dnes běžně opraví kabel samo) – abyste se naučili tento rozdíl!</em></li>
@@ -650,6 +668,7 @@ ul.sub-list li::before {
             <div>
                 <h3>Křížený kabel (Crossover)</h3>
                 <ul class="professional-list">
+                    <li><strong>Ikona v menu:</strong> Přerušovaná černá čára.</li>
                     <li>Slouží k propojení <strong>stejných</strong> typů zařízení.</li>
                     <li><strong>Příklad:</strong> Počítač &harr; Počítač, nebo Switch &harr; Switch.</li>
                     <li>Fyzicky kříží vysílací (Tx) a přijímací (Rx) piny, aby zabránil kolizi dat při přímém spojení.</li>
@@ -669,14 +688,14 @@ ul.sub-list li::before {
                     <ul>
                         <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Základní komunikace dvou PC napřímo bez centrálního prvku.</li>
                         <li><i class="fa-solid fa-desktop"></i><strong>Krok 1:</strong> Z <em>End Devices</em> vložte na plochu <strong>PC1</strong> a <strong>PC2</strong>.</li>
-                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 2:</strong> Z <em>Connections</em> vyberte <strong>Copper Cross-Over</strong> (křížená dvoulinka).</li>
+                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 2:</strong> Z <em>Connections</em> vyberte <strong>Copper Cross-Over</strong> (ikona <strong>černé přerušované čáry</strong>). <em>Pozor: Nepoužívejte oranžový blesk!</em></li>
                         <li><i class="fa-solid fa-plug"></i><strong>Krok 3:</strong> Propojte oba počítače, vždy do portu <strong>FastEthernet0</strong>. Zelené tečky značí fyzické spojení.</li>
                     </ul>
                 </div>
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&q=80" alt="Kabeláž a PC">
+                    <div class="image-placeholder"></div>
                 </div>
             </div>
         </div>
@@ -705,90 +724,456 @@ ul.sub-list li::before {
     </div>
 </div>
 
-<!-- Slide 17: Image_Right_Text_Left (Jak funguje Ping a ARP) -->
+<!-- Slide 17: Image_Right_Text_Left (Tajemství kabelu) -->
 <div class="slide-container" id="slide17">
-    <h2 class="slide-title">Co se děje "pod povrchem"?</h2>
+    <h2 class="slide-title">Tajemství UTP kabelu: Proč křížíme?</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-eye-slash"></i><strong>Neviditelný krok:</strong> PC1 musí znát MAC (fyzickou) adresu PC2.</li>
-                        <li><i class="fa-solid fa-satellite-dish"></i><strong>ARP Dotaz:</strong> PC1 vyšle broadcast (všem v síti): <em>„Kdo má IP 192.168.1.2?“</em>. Získá MAC adresu a uloží do tabulky.</li>
-                        <li><i class="fa-solid fa-envelope-open-text"></i><strong>ICMP Echo:</strong> Teprve nyní se odesílá samotný Ping!</li>
-                        <li><i class="fa-solid fa-clock"></i><strong>Simulation Mode:</strong> Režim simulátoru v pravém dolním rohu umí zpomalit čas a tyto kroky ukázat jako barevné obálky.</li>
+                        <li><i class="fa-solid fa-arrows-turn-to-dots"></i><strong>Naslouchání a vysílání:</strong> Kroucená dvojlinka obsahuje páry drátů. Některé z nich data odesílají (<strong>Tx</strong> - Transmit) a jiné je přijímají (<strong>Rx</strong> - Receive).</li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i><strong>Problém přímého kabelu:</strong> Pokud spojíme 2 stejná zařízení (PC a PC), směřuje vysílač na vysílač (Tx &rarr; Tx). Vznikne kolize a zařízení se "neslyší".</li>
+                        <li><i class="fa-solid fa-shuffle"></i><strong>Řešení (Crossover):</strong> Křížený kabel uvnitř konektoru dráty fyzicky prohodí. Vysílač prvního PC se tak napojí na přijímač druhého (Tx &rarr; Rx) a komunikace funguje.</li>
                     </ul>
                 </div>
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80" alt="Příkazový řádek (ping)">
+                    <div class="image-placeholder"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Slide 18: Image_Right_Text_Left (Cvičení 2) -->
+<!-- Slide 18: Image_Right_Text_Left (IP v realnem svete) -->
 <div class="slide-container" id="slide18">
+    <h2 class="slide-title">Konfigurace IP v reálném světě</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-window-maximize"></i><strong>Grafické rozhraní (GUI):</strong>
+                            <ul class="sub-list" style="margin-top: 5px; padding-left: 15px;">
+                                <li>Packet Tracer simuluje "klikátka" běžných OS.</li>
+                                <li><strong>Ve Windows:</strong> Jdeme přes <em>Ovládací panely &rarr; Síťová připojení &rarr; Vlastnosti adaptéru &rarr; Protokol IPv4</em>.</li>
+                            </ul>
+                        </li>
+                        <li><i class="fa-solid fa-terminal"></i><strong>Příkazový řádek (CLI):</strong>
+                            <ul class="sub-list" style="margin-top: 5px; padding-left: 15px;">
+                                <li>Profesionální servery často grafické rozhraní vůbec nemají, vše se dělá přes textovou konzoli.</li>
+                                <li><strong>Linux:</strong> Používá se nástroj <code>ip addr</code> nebo úprava textových konfiguračních souborů.</li>
+                                <li><strong>Windows:</strong> Lze využít <code>netsh</code> nebo PowerShell.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 19: Image_Right_Text_Left (Co je Switch) -->
+<div class="slide-container" id="slide19">
+    <h2 class="slide-title">Centrální prvek: Síťový přepínač (Switch)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-network-wired"></i><strong>Hvězdicová topologie:</strong> Kabel napřímo stačí jen pro dva počítače. K propojení 3 a více uzlů potřebujeme centrální bod, do kterého se všechny připojí – Switch.</li>
+                        <li><i class="fa-solid fa-brain"></i><strong>Inteligentní směrování:</strong> Switch není jen "hloupá rozdvojka". Sleduje MAC adresy počítačů a vytváří si vnitřní mapu (CAM tabulku).</li>
+                        <li><i class="fa-solid fa-traffic-light"></i><strong>Efektivita:</strong> Na rozdíl od historických Hubů neposílá data všem okolo. Přesně ví, na kterém portu je adresát, a data doručí pouze jemu. Šetří tím kapacitu sítě.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Network_switch_and_patch_panel.jpg/1024px-Network_switch_and_patch_panel.jpg" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Switch'" alt="Síťový Switch">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 20: Image_Right_Text_Left (Změna kabeláže) -->
+<div class="slide-container" id="slide20">
+    <h2 class="slide-title">Proč už nekřížíme kabely?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-code-compare"></i><strong>Pravidlo rozdílných zařízení:</strong> Počítač a Switch jsou z hlediska architektury rozdílné prvky (PC zpracovává data jinak než přepínač).</li>
+                        <li><i class="fa-solid fa-arrows-turn-to-dots"></i><strong>Vnitřní křížení portu:</strong> Switch je od výroby zkonstruován tak, že jeho přijímací piny "sedí" přesně naproti vysílacím pinům počítače (MDI-X).</li>
+                        <li><i class="fa-solid fa-ethernet"></i><strong>Přímý kabel:</strong> Křížení v kabelu by to celé znovu pokazilo! Pro spojení sítě se Switchem se proto vždy používá <strong>přímý kabel (Straight-Through)</strong>.</li>
+                        <li><i class="fa-solid fa-mouse-pointer"></i><strong>V Packet Traceru:</strong> Najdete jej jako <strong>plnou černou čáru</strong> hned vedle té přerušované.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 21: Image_Right_Text_Left (Cvičení 2) -->
+<div class="slide-container" id="slide21">
     <h2 class="slide-title">Cvičení 2: Hvězdicová topologie</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Naučit se propojit více než dva počítače do jedné sítě pomocí centrálního prvku.</li>
-                        <li><i class="fa-solid fa-network-wired"></i><strong>Krok 1:</strong> Smažte kabel mezi PC1 a PC2. Doprostřed plochy vložte <strong>Switch 2960</strong> a přidejte k němu navíc třetí PC.</li>
-                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 2:</strong> Odlišná zařízení! Použijte přímý kabel (<em>Copper Straight-Through</em>) a zapojte všechny 3 PC do Switche.</li>
-                        <li><i class="fa-solid fa-check"></i><strong>Krok 3:</strong> Přiřaďte PC3 IP adresu <code>192.168.1.3</code> a pingněte si postupně oba předchozí PC!</li>
+                        <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Naučit se propojit 3 počítače do jedné sítě.</li>
+                        <li><i class="fa-solid fa-server"></i><strong>Krok 1:</strong> Smažte původní křížený kabel. Doprostřed vložte <strong>Switch 2960</strong> a přidejte na plochu nové <strong>PC3</strong>.</li>
+                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 2:</strong> Odlišná zařízení! Zvolte <strong>přímý kabel</strong> (plná čára) a propojte všechna PC se Switchem (vyčkejte na zelené tečky, Switch zkoumá síť).</li>
+                        <li><i class="fa-solid fa-check"></i><strong>Krok 3:</strong> Přiřaďte PC3 IP adresu <code>192.168.1.3</code> a postupně si z něj pingněte předchozí dva počítače!</li>
                     </ul>
                 </div>
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Síťový přepínač Switch">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Network_switch_and_patch_panel.jpg/1024px-Network_switch_and_patch_panel.jpg" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Topologie'" alt="Hvězdicová topologie se 3 PC a Switchem">
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Slide 19: Image_Right_Text_Left (Cvičení 3) -->
-<div class="slide-container" id="slide19">
-    <h2 class="slide-title">Cvičení 3: Automatizace s DHCP</h2>
+<!-- Slide 22: Zelené kontrolky bez IP adresy -->
+<div class="slide-container" id="slide22">
+    <h2 class="slide-title">Zelené kontrolky i bez IP adresy?</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Nepřidělovat adresy ručně. Pověřit tím samostatný Server v síti.</li>
-                        <li><i class="fa-solid fa-server"></i><strong>Krok 1:</strong> Vložte na plochu <strong>Server</strong>, připojte ho do Switche a staticky mu dejte IP <code>192.168.1.100</code>.</li>
-                        <li><i class="fa-solid fa-power-off"></i><strong>Krok 2:</strong> Na Serveru běžte na <em>Services &rarr; DHCP</em>. Změňte stav na <strong>ON</strong> a uložte.</li>
-                        <li><i class="fa-solid fa-rotate-right"></i><strong>Krok 3:</strong> Projděte všechna PC a v <em>IP Configuration</em> změňte volbu na <strong>DHCP</strong>. Pokud je vše OK, IP adresu nově počítač získá naprosto automaticky!</li>
+                        <li><i class="fa-solid fa-bolt"></i><strong>Fyzická vrstva (L1):</strong> Zelená kontrolka (Link) u portu Switche znamená pouze to, že kabel je zapojen v pořádku a elektrický obvod se úspěšně uzavřel.</li>
+                        <li><i class="fa-solid fa-handshake-simple"></i><strong>Linková vrstva (L2):</strong> Síťové karty si začnou okamžitě vyměňovat základní hardwarové signály (tzv. Ethernet rámce). K tomu IP adresu vůbec nepotřebují.</li>
+                        <li><i class="fa-solid fa-road"></i><strong>IP adresa (L3):</strong> IP adresa je až logická nadstavba. Zapojení kabelu je jako postavit novou silnici (zelené světlo), ale dokud nedáte zařízením IP adresu, nejezdí po ní žádná auta.</li>
                     </ul>
                 </div>
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="Server v racku DHCP">
+                    <div class="image-placeholder"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Slide 20: Q&A -->
-<div class="slide-container" id="slide20">
+<!-- Slide 23: Zjištění MAC adresy -->
+<div class="slide-container" id="slide23">
+    <h2 class="slide-title">Fyzická adresa: Jak zjistím své MAC?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-fingerprint"></i><strong>Co je to MAC:</strong> Unikátní hardwarová adresa vypálená do síťové karty už výrobcem (např. <code>00:1A:2B:3C:4D:5E</code>). Nelze ji běžně změnit.</li>
+                        <li><i class="fa-solid fa-terminal"></i><strong>Windows / Packet Tracer:</strong> Otevřete u počítače <em>Command Prompt</em> a zadejte příkaz <code>ipconfig /all</code>. Hledejte řádek <strong>Physical Address</strong>.</li>
+                        <li><i class="fa-brands fa-linux"></i><strong>Reálný Linux:</strong> V reálném světě se na linuxových strojích (nebo na macOS) používá příkaz <code>ip addr</code> nebo starší <code>ifconfig</code>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Linux-terminal.png" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=MAC+Adresa'" alt="Výpis příkazu ipconfig all s MAC adresou">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 24: Vice MAC adres (NEW!) -->
+<div class="slide-container" id="slide24">
+    <h2 class="slide-title">Troubleshooting: Mám více MAC adres!</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i><strong>Více síťových karet:</strong> Jeden počítač má často více MAC adres! Každý síťový adaptér (LAN kabel, Wi-Fi, Bluetooth) má svou vlastní, unikátní MAC.</li>
+                        <li><i class="fa-solid fa-list"></i><strong>Výpis ipconfig /all:</strong> Tento příkaz vám vypíše blok informací pro každý adaptér zvlášť pod sebou.</li>
+                        <li><i class="fa-solid fa-ethernet"></i><strong>Ten správný adaptér:</strong> Pokud počítač komunikuje přes kabel, musíte zjišťovat MAC adresu ze sekce <strong>FastEthernet0</strong> (nebo Ethernet).</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 25: Tabulka Switche -->
+<div class="slide-container" id="slide25">
+    <h2 class="slide-title">Pohled do "mozku" Switche</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-table-list"></i><strong>CAM Tabulka:</strong> Switch si přesně pamatuje, která MAC adresa je připojena na kterém jeho portu. Můžeme si tuto tabulku vypsat? Ano!</li>
+                        <li><i class="fa-solid fa-keyboard"></i><strong>Příkazový řádek (CLI):</strong> Klikněte v Packet Traceru na centrální Switch a přejděte do záložky <strong>CLI</strong>.</li>
+                        <li><i class="fa-solid fa-code"></i><strong>Magické příkazy:</strong> Stiskněte <em>Enter</em>. Napište <code>enable</code> (vstup do administrátorského režimu) a poté zadejte příkaz <code>show mac address-table</code>.</li>
+                        <li><i class="fa-solid fa-eye"></i><strong>Výsledek:</strong> Switch vám ukáže přesný seznam portů (např. Fa0/1) a k nim přiřazených MAC adres vašich počítačů.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 26: Prazdna tabulka chytak -->
+<div class="slide-container" id="slide26">
+    <h2 class="slide-title">Chyták: Proč je tabulka prázdná?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-ghost"></i><strong>Prázdný výpis?</strong> Zadali jste <code>show mac address-table</code> a tabulka je prázdná? Neudělali jste chybu!</li>
+                        <li><i class="fa-solid fa-ear-listen"></i><strong>Učení za pochodu:</strong> Switch adresy nezná dopředu. Zapisuje si je až ve chvíli, kdy zařízení <strong>pošle nějaká data</strong> (přečte zdrojovou MAC z hlavičky rámce).</li>
+                        <li><i class="fa-solid fa-lightbulb"></i><strong>Řešení:</strong> Běžte na PC1 a pingněte PC2. Tím v síti vytvoříte provoz. Když teď zkusíte příkaz ve switchi znovu, adresy tam už budou!</li>
+                        <li><i class="fa-solid fa-stopwatch"></i><strong>Stárnutí záznamů:</strong> Pokud počítače přestanou komunikovat, switch jejich MAC adresu z tabulky obvykle po 5 minutách zase promaže.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 27: Uvod do FTP -->
+<div class="slide-container" id="slide27">
+    <h2 class="slide-title">Protokol FTP: Sdílení souborů</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-globe"></i><strong>Vzpomínka na tvorbu webů:</strong> Jak se dostanou HTML stránky z vašeho počítače na veřejný webhosting? Pomocí protokolu <strong>FTP</strong> (File Transfer Protocol).</li>
+                        <li><i class="fa-solid fa-server"></i><strong>Architektura Klient-Server:</strong> Jeden centrální počítač (Server) nabízí úložiště a běží na něm FTP služba. Ostatní počítače (Klienti) se k němu připojují.</li>
+                        <li><i class="fa-solid fa-arrows-up-down"></i><strong>Upload a Download:</strong> Klienti mohou na server data nahrávat (put/upload) nebo je z něj naopak stahovat (get/download).</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 28: Cvičení 3 - HW a IP -->
+<div class="slide-container" id="slide28">
+    <h2 class="slide-title">Cvičení 3: FTP Server (Hardware a IP)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Postavit v naší síti FTP server a nasimulovat si nahrávání a stahování webových stránek.</li>
+                        <li><i class="fa-solid fa-server"></i><strong>Krok 1:</strong> Z kategorie <em>End Devices</em> vytáhněte na plochu <strong>Server</strong>.</li>
+                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 2:</strong> Připojte Server do stávajícího Switche pomocí přímého kabelu (plná čára).
+                            <ul class="sub-list" style="margin-top: 10px; padding-left: 15px;">
+                                <li><strong>Proč přes Switch?</strong> Kdybychom server zapojili kabelem přímo do PC1, nikdo jiný by k němu neměl přístup. Tím, že ho připojíme do switche, ho zpřístupníme <strong>všem počítačům v lokální síti</strong> zároveň!</li>
+                            </ul>
+                        </li>
+                        <li><i class="fa-solid fa-microchip"></i><strong>Krok 3:</strong> V <em>Desktop &rarr; IP Configuration</em> přidělte serveru pevnou IP adresu <code>192.168.1.100</code>. Masku nechte doplnit.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 29: Cvičení 3 - Sluzba -->
+<div class="slide-container" id="slide29">
+    <h2 class="slide-title">Cvičení 3: Konfigurace FTP Služby</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-gears"></i><strong>Krok 4 (Služby):</strong> Otevřete nastavení Serveru a nahoře přejděte na záložku <strong>Services</strong>. Vlevo v menu vyberte <strong>FTP</strong>.</li>
+                        <li><i class="fa-solid fa-power-off"></i><strong>Krok 5 (Aktivace):</strong> Zkontrolujte, že je služba přepnuta na <strong>ON</strong>.</li>
+                        <li><i class="fa-solid fa-users"></i><strong>Krok 6 (Uživatelé):</strong> Dole vidíte seznam uživatelů (např. <em>cisco</em>). Můžete si nahoře vytvořit vlastního (Username, Password) a zaškrtnout mu práva: <em>Write, Read, Delete, Rename, List</em>. Nakonec klikněte na <strong>+ Add</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 30: Cvičení 3 - Nahrani souboru -->
+<div class="slide-container" id="slide30">
+    <h2 class="slide-title">Cvičení 3: Nahrání dat na Server (Upload)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-file-code"></i><strong>Krok 7 (Vytvoření webu):</strong> Otevřete PC1 &rarr; záložka <em>Desktop</em> &rarr; spusťte <strong>Text Editor</strong>. Napište krátký vzkaz (např. <em>Ahoj Svete!</em>) a soubor uložte jako <code>index.html</code> (File &rarr; Save).</li>
+                        <li><i class="fa-solid fa-terminal"></i><strong>Krok 8 (Připojení k FTP):</strong> Na PC1 otevřete <em>Command Prompt</em>. Zadejte <code>ftp 192.168.1.100</code>. Po výzvě zadejte jméno a heslo, které jste vytvořili na serveru.</li>
+                        <li><i class="fa-solid fa-cloud-arrow-up"></i><strong>Krok 9 (Upload):</strong> Nyní jste v terminálu FTP. Nahrajte svůj soubor příkazem <code>put index.html</code>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 31: Cvičení 3 - Stazeni souboru -->
+<div class="slide-container" id="slide31">
+    <h2 class="slide-title">Cvičení 3: Stažení dat (Download)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-laptop-code"></i><strong>Krok 10 (Jiný klient):</strong> Běžte na úplně jiný počítač, např. PC2.</li>
+                        <li><i class="fa-solid fa-link"></i><strong>Krok 11 (Připojení):</strong> Otevřete <em>Command Prompt</em> a opět se připojte na server: <code>ftp 192.168.1.100</code> (jméno a heslo).</li>
+                        <li><i class="fa-solid fa-list-ul"></i><strong>Krok 12 (Výpis):</strong> Zadejte příkaz <code>dir</code>. Ve výpisu složky byste měli najít váš soubor <code>index.html</code>!</li>
+                        <li><i class="fa-solid fa-cloud-arrow-down"></i><strong>Krok 13 (Download):</strong> Soubor si k sobě stáhnete příkazem <code>get index.html</code>. Úspěšně jsme nasimulovali webhosting v lokální síti!</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 32: Cvičení 3 - Bonus FTP -->
+<div class="slide-container" id="slide32">
+    <h2 class="slide-title">Cvičení 3 (Bonus): Správa souborů na dálku</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-user-shield"></i><strong>Otestujte svá práva:</strong> Při vytváření účtu (Krok 6) jsme zaškrtávali <em>Delete</em> a <em>Rename</em>. K čemu to slouží v praxi?</li>
+                        <li><i class="fa-solid fa-pen-to-square"></i><strong>Přejmenování:</strong> Zkuste v příkazovém řádku FTP zadat: <code>rename index.html staryweb.html</code>. Zkontrolujte výsledek výpisem <code>dir</code>.</li>
+                        <li><i class="fa-solid fa-trash"></i><strong>Smazání:</strong> Pokud soubor už nepotřebujete, zkuste ho smazat příkazem <code>delete staryweb.html</code>.</li>
+                        <li><i class="fa-solid fa-door-open"></i><strong>Konec relace:</strong> Jakmile jste hotovi, slušně se odpojte ze serveru příkazem <code>quit</code>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 33: Cvičení 3 - Zobrazeni Webu -->
+<div class="slide-container" id="slide33">
+    <h2 class="slide-title">Cvičení 3: Zobrazení webu v prohlížeči</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-globe"></i><strong>Krok 14 (Ověření HTTP):</strong> Klikněte na Server, běžte do <em>Services &rarr; HTTP</em> a ujistěte se, že služby HTTP i HTTPS jsou <strong>ON</strong>. Tím server funguje jako skutečný webserver.</li>
+                        <li><i class="fa-brands fa-chrome"></i><strong>Krok 15 (Prohlížeč):</strong> Otevřete PC1 nebo PC2. V záložce <em>Desktop</em> najděte a spusťte aplikaci <strong>Web Browser</strong>.</li>
+                        <li><i class="fa-solid fa-magnifying-glass"></i><strong>Krok 16 (Načtení stránky):</strong> Do horního řádku pro URL adresu zadejte IP adresu serveru: <code>192.168.1.100</code> a klikněte na <strong>Go</strong>.</li>
+                        <li><i class="fa-regular fa-face-smile-beam"></i><strong>Výsledek:</strong> Packet Tracer načte váš soubor <code>index.html</code> a zobrazí váš vzkaz (např. <em>Ahoj Svete!</em>). Kruh se uzavřel!</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 34: Chytak Cisco Web a File Not found -->
+<div class="slide-container" id="slide34">
+    <h2 class="slide-title">Troubleshooting: Kde je můj soubor?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-folder-open"></i><strong>Na serveru je!</strong> Výpis <code>dir</code> ve vašem FTP ukazuje, že upload proběhl úspěšně. Chyba není ve vás.</li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i><strong>Omezení simulátoru:</strong> V Packet Traceru je HTTP server oddělený od FTP paměti. Soubory nahrané přes FTP webový server simulátoru prostě "nevidí".</li>
+                        <li><i class="fa-solid fa-server"></i><strong>Reálný svět (Document Root):</strong> Ve skutečnosti to řeší tzv. kořenový adresář webu (např. <code>/var/www/html</code>). Administrátor nastaví FTP účet tak, aby nahrával data <strong>přímo do této webové složky</strong>.</li>
+                        <li><i class="fa-solid fa-graduation-cap"></i><strong>Poučení:</strong> Narazili jste na skvělý příklad z praxe! Oprávnění a správné směrování složek je základem každého webhostingu.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 35: Q&A -->
+<div class="slide-container" id="slide35">
     <div class="qa-layout">
         <h2>Závěr a dotazy</h2>
-        <p>Ať už řešíme fyzickou vrstvu nebo logické přidělování IP adres, základní principy sítě zůstávají nezměněny.</p>
+        <p>Základní principy fyzického propojení a logické adresace máme za sebou.</p>
+        <p>Nyní je prostor pro vaše technické dotazy a diskusi k probraným základům.</p>
     </div>
 </div>
 
 <!-- Ovládací prvky -->
 <div class="controls">
     <button class="nav-btn" id="prevBtn" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
-    <div class="slide-counter"><span id="currentNum">1</span> / <span id="totalNum">20</span></div>
+    <div class="slide-counter"><span id="currentNum">1</span> / <span id="totalNum">35</span></div>
     <button class="nav-btn" id="nextBtn" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
 </div>
 
