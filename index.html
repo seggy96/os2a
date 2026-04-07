@@ -695,7 +695,7 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <div class="image-placeholder"></div>
+                    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Kabel%C3%A1%C5%BE'" alt="Kabeláž a PC">
                 </div>
             </div>
         </div>
@@ -740,7 +740,7 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <div class="image-placeholder"></div>
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=UTP+Kabel'" alt="UTP kabel s obnaženými barevnými dráty">
                 </div>
             </div>
         </div>
@@ -773,7 +773,7 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <div class="image-placeholder"></div>
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Termin%C3%A1l'" alt="Okno vlastností protokolu IPv4 ve Windows">
                 </div>
             </div>
         </div>
@@ -867,7 +867,7 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <div class="image-placeholder"></div>
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Porty'" alt="Svítící porty na switchi">
                 </div>
             </div>
         </div>
@@ -913,7 +913,7 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <div class="image-placeholder"></div>
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Termin%C3%A1l'" alt="ipconfig all s vyznačeným FastEthernet">
                 </div>
             </div>
         </div>
@@ -937,7 +937,7 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <div class="image-placeholder"></div>
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=CAM+Tabulka'" alt="CLI konzole switche s tabulkou MAC adres">
                 </div>
             </div>
         </div>
@@ -961,24 +961,24 @@ ul.sub-list li::before {
             </div>
             <div>
                 <div class="image-wrapper">
-                    <div class="image-placeholder"></div>
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Pr%C3%A1zdn%C3%A1+Tabulka'" alt="Prázdná MAC tabulka a překvapený uživatel">
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Slide 27: Uvod do FTP -->
+<!-- Slide 27: Uvod do FTP a DNS -->
 <div class="slide-container" id="slide27">
-    <h2 class="slide-title">Protokol FTP: Sdílení souborů</h2>
+    <h2 class="slide-title">Sdílení souborů: Protokol FTP</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-globe"></i><strong>Vzpomínka na tvorbu webů:</strong> Jak se dostanou HTML stránky z vašeho počítače na veřejný webhosting? Pomocí protokolu <strong>FTP</strong> (File Transfer Protocol).</li>
-                        <li><i class="fa-solid fa-server"></i><strong>Architektura Klient-Server:</strong> Jeden centrální počítač (Server) nabízí úložiště a běží na něm FTP služba. Ostatní počítače (Klienti) se k němu připojují.</li>
-                        <li><i class="fa-solid fa-arrows-up-down"></i><strong>Upload a Download:</strong> Klienti mohou na server data nahrávat (put/upload) nebo je z něj naopak stahovat (get/download).</li>
+                        <li><i class="fa-solid fa-server"></i><strong>Architektura Klient-Server:</strong> Abychom mohli mezi počítači sdílet složky a soubory, potřebujeme centrální úložiště – v našem případě vyhrazený FTP server.</li>
+                        <li><i class="fa-solid fa-folder-tree"></i><strong>Protokol FTP:</strong> Zkratka pro <em>File Transfer Protocol</em>. Jde o standardní způsob, jak po síti bezpečně a spolehlivě přenášet (nahrávat i stahovat) datové soubory.</li>
+                        <li><i class="fa-solid fa-network-wired"></i><strong>Cíl dnešního cvičení:</strong> Rozšíříme naši síť o nový server. Zprovozníme na něm FTP, nastavíme uživatelská práva a zkusíme si sdílet textový dokument mezi počítači.</li>
                     </ul>
                 </div>
             </div>
@@ -991,22 +991,17 @@ ul.sub-list li::before {
     </div>
 </div>
 
-<!-- Slide 28: Cvičení 3 - HW a IP -->
+<!-- Slide 28: Cvičení 3 - HW a Topologie -->
 <div class="slide-container" id="slide28">
-    <h2 class="slide-title">Cvičení 3: FTP Server (Hardware a IP)</h2>
+    <h2 class="slide-title">Cvičení 3: Hardware a Topologie</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-bullseye"></i><strong>Cíl:</strong> Postavit v naší síti FTP server a nasimulovat si nahrávání a stahování webových stránek.</li>
-                        <li><i class="fa-solid fa-server"></i><strong>Krok 1:</strong> Z kategorie <em>End Devices</em> vytáhněte na plochu <strong>Server</strong>.</li>
-                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 2:</strong> Připojte Server do stávajícího Switche pomocí přímého kabelu (plná čára).
-                            <ul class="sub-list" style="margin-top: 10px; padding-left: 15px;">
-                                <li><strong>Proč přes Switch?</strong> Kdybychom server zapojili kabelem přímo do PC1, nikdo jiný by k němu neměl přístup. Tím, že ho připojíme do switche, ho zpřístupníme <strong>všem počítačům v lokální síti</strong> zároveň!</li>
-                            </ul>
-                        </li>
-                        <li><i class="fa-solid fa-microchip"></i><strong>Krok 3:</strong> V <em>Desktop &rarr; IP Configuration</em> přidělte serveru pevnou IP adresu <code>192.168.1.100</code>. Masku nechte doplnit.</li>
+                        <li><i class="fa-solid fa-server"></i><strong>Krok 1 (Hardware):</strong> K našemu stávajícímu Switči a počítačům PC0 a PC1 přetáhněte na plochu <strong>jeden nový Server</strong> (z kategorie End Devices).</li>
+                        <li><i class="fa-solid fa-pen"></i><strong>Krok 2 (Pojmenování):</strong> V záložce <em>Config</em> změňte "Display Name" u serveru na <strong>FTP</strong>. Bude to přehlednější.</li>
+                        <li><i class="fa-solid fa-ethernet"></i><strong>Krok 3 (Propojení):</strong> Odlišná zařízení (Server a Switch) zapojte pomocí <strong>přímého kabelu</strong> (plná černá čára).</li>
                     </ul>
                 </div>
             </div>
@@ -1019,17 +1014,40 @@ ul.sub-list li::before {
     </div>
 </div>
 
-<!-- Slide 29: Cvičení 3 - Sluzba -->
+<!-- Slide 29: Cvičení 3 - Adresace -->
 <div class="slide-container" id="slide29">
+    <h2 class="slide-title">Cvičení 3: Nastavení IP adresy</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-database"></i><strong>Krok 4 (FTP Server IP):</strong> Otevřete server FTP, přejděte do <em>Desktop &rarr; IP Configuration</em> a nastavte mu pevnou IP adresu <code>192.168.1.100</code>.</li>
+                        <li><i class="fa-solid fa-thumbtack"></i><strong>Proč pevná adresa?</strong> Servery musí mít vždy statickou IP adresu, aby klienti (naše PC) přesně věděli, kde službu na síti neomylně najdou.</li>
+                        <li><i class="fa-solid fa-desktop"></i><strong>Krok 5 (Ověření PC):</strong> Ujistěte se, že vaše počítače mají funkční IP adresy ve stejné síti, tedy například <code>192.168.1.2</code> (pro PC0) a <code>.3</code> (pro PC1).</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 30: Cvičení 3 - FTP Sluzba -->
+<div class="slide-container" id="slide30">
     <h2 class="slide-title">Cvičení 3: Konfigurace FTP Služby</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-gears"></i><strong>Krok 4 (Služby):</strong> Otevřete nastavení Serveru a nahoře přejděte na záložku <strong>Services</strong>. Vlevo v menu vyberte <strong>FTP</strong>.</li>
-                        <li><i class="fa-solid fa-power-off"></i><strong>Krok 5 (Aktivace):</strong> Zkontrolujte, že je služba přepnuta na <strong>ON</strong>.</li>
-                        <li><i class="fa-solid fa-users"></i><strong>Krok 6 (Uživatelé):</strong> Dole vidíte seznam uživatelů (např. <em>cisco</em>). Můžete si nahoře vytvořit vlastního (Username, Password) a zaškrtnout mu práva: <em>Write, Read, Delete, Rename, List</em>. Nakonec klikněte na <strong>+ Add</strong>.</li>
+                        <li><i class="fa-solid fa-gears"></i><strong>Krok 6 (Služby):</strong> Otevřete nastavení FTP Serveru a nahoře přejděte na záložku <strong>Services</strong>. Vlevo v menu vyberte <strong>FTP</strong>. Zkontrolujte, že je <strong>ON</strong>.</li>
+                        <li><i class="fa-solid fa-user-plus"></i><strong>Krok 7 (Nový uživatel):</strong> Založíme si vlastního uživatele. Do pole Username napište <code>admin</code> a Password také <code>admin</code>.</li>
+                        <li><i class="fa-solid fa-check"></i><strong>Krok 8 (Práva):</strong> Zaškrtněte práva pro zápis (<strong>Write</strong>) a čtení (<strong>Read</strong>). Tím omezíte, co uživatel smí. Nakonec klikněte na tlačítko <strong>+ Add</strong>. Váš uživatel se objeví v seznamu dole.</li>
                     </ul>
                 </div>
             </div>
@@ -1042,41 +1060,17 @@ ul.sub-list li::before {
     </div>
 </div>
 
-<!-- Slide 30: Cvičení 3 - Nahrani souboru -->
-<div class="slide-container" id="slide30">
-    <h2 class="slide-title">Cvičení 3: Nahrání dat na Server (Upload)</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <div class="bullet-list">
-                    <ul>
-                        <li><i class="fa-solid fa-file-code"></i><strong>Krok 7 (Vytvoření webu):</strong> Otevřete PC1 &rarr; záložka <em>Desktop</em> &rarr; spusťte <strong>Text Editor</strong>. Napište krátký vzkaz (např. <em>Ahoj Svete!</em>) a soubor uložte jako <code>index.html</code> (File &rarr; Save).</li>
-                        <li><i class="fa-solid fa-terminal"></i><strong>Krok 8 (Připojení k FTP):</strong> Na PC1 otevřete <em>Command Prompt</em>. Zadejte <code>ftp 192.168.1.100</code>. Po výzvě zadejte jméno a heslo, které jste vytvořili na serveru.</li>
-                        <li><i class="fa-solid fa-cloud-arrow-up"></i><strong>Krok 9 (Upload):</strong> Nyní jste v terminálu FTP. Nahrajte svůj soubor příkazem <code>put index.html</code>.</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <div class="image-placeholder"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Slide 31: Cvičení 3 - Stazeni souboru -->
+<!-- Slide 31: Cvičení 3 - Vytvoreni souboru -->
 <div class="slide-container" id="slide31">
-    <h2 class="slide-title">Cvičení 3: Stažení dat (Download)</h2>
+    <h2 class="slide-title">Cvičení 3: Tvorba vlastního souboru</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-laptop-code"></i><strong>Krok 10 (Jiný klient):</strong> Běžte na úplně jiný počítač, např. PC2.</li>
-                        <li><i class="fa-solid fa-link"></i><strong>Krok 11 (Připojení):</strong> Otevřete <em>Command Prompt</em> a opět se připojte na server: <code>ftp 192.168.1.100</code> (jméno a heslo).</li>
-                        <li><i class="fa-solid fa-list-ul"></i><strong>Krok 12 (Výpis):</strong> Zadejte příkaz <code>dir</code>. Ve výpisu složky byste měli najít váš soubor <code>index.html</code>!</li>
-                        <li><i class="fa-solid fa-cloud-arrow-down"></i><strong>Krok 13 (Download):</strong> Soubor si k sobě stáhnete příkazem <code>get index.html</code>. Úspěšně jsme nasimulovali webhosting v lokální síti!</li>
+                        <li><i class="fa-solid fa-file-lines"></i><strong>Krok 9 (Text Editor):</strong> Abychom měli co nahrávat, musíme soubor vytvořit. Přejděte na počítač <strong>PC0</strong> do záložky <em>Desktop</em> a spusťte aplikaci <strong>Text Editor</strong>.</li>
+                        <li><i class="fa-solid fa-keyboard"></i><strong>Krok 10 (Zápis dat):</strong> Do bílé plochy napište libovolný tajný vzkaz (např. <em>"Blah blah blah"</em>).</li>
+                        <li><i class="fa-solid fa-floppy-disk"></i><strong>Krok 11 (Uložení):</strong> V horním menu zvolte <em>File &rarr; Save</em>. Jako název souboru zadejte přesně <code>soubor.txt</code> a uložte. Můžete editor zavřít.</li>
                     </ul>
                 </div>
             </div>
@@ -1089,18 +1083,17 @@ ul.sub-list li::before {
     </div>
 </div>
 
-<!-- Slide 32: Cvičení 3 - Bonus FTP -->
+<!-- Slide 32: Cvičení 3 - Nahrani souboru (Upload) -->
 <div class="slide-container" id="slide32">
-    <h2 class="slide-title">Cvičení 3 (Bonus): Správa souborů na dálku</h2>
+    <h2 class="slide-title">Cvičení 3: Odeslání na server (Upload)</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-user-shield"></i><strong>Otestujte svá práva:</strong> Při vytváření účtu (Krok 6) jsme zaškrtávali <em>Delete</em> a <em>Rename</em>. K čemu to slouží v praxi?</li>
-                        <li><i class="fa-solid fa-pen-to-square"></i><strong>Přejmenování:</strong> Zkuste v příkazovém řádku FTP zadat: <code>rename index.html staryweb.html</code>. Zkontrolujte výsledek výpisem <code>dir</code>.</li>
-                        <li><i class="fa-solid fa-trash"></i><strong>Smazání:</strong> Pokud soubor už nepotřebujete, zkuste ho smazat příkazem <code>delete staryweb.html</code>.</li>
-                        <li><i class="fa-solid fa-door-open"></i><strong>Konec relace:</strong> Jakmile jste hotovi, slušně se odpojte ze serveru příkazem <code>quit</code>.</li>
+                        <li><i class="fa-solid fa-terminal"></i><strong>Krok 12 (Připojení):</strong> Stále na <strong>PC0</strong> otevřete <em>Command Prompt</em>. Zadejte příkaz k připojení: <code>ftp 192.168.1.100</code>.</li>
+                        <li><i class="fa-solid fa-eye-slash"></i><strong>Krok 13 (Neviditelné heslo!):</strong> Simulátor po vás chce jméno (<code>admin</code>). Pak se zeptá na heslo. <em>CHYTÁK: Při psaní hesla <code>admin</code> se na obrazovce nic neukazuje! Pište naslepo a dejte Enter.</em></li>
+                        <li><i class="fa-solid fa-cloud-arrow-up"></i><strong>Krok 14 (Upload):</strong> Napište příkaz <code>put soubor.txt</code>. Následně byste měli vidět hlášku "transfer complete". Poté FTP opustíte příkazem <code>quit</code>.</li>
                     </ul>
                 </div>
             </div>
@@ -1113,18 +1106,17 @@ ul.sub-list li::before {
     </div>
 </div>
 
-<!-- Slide 33: Cvičení 3 - Zobrazeni Webu -->
+<!-- Slide 33: Cvičení 3 - Stazeni souboru (Download) -->
 <div class="slide-container" id="slide33">
-    <h2 class="slide-title">Cvičení 3: Zobrazení webu v prohlížeči</h2>
+    <h2 class="slide-title">Cvičení 3: Stažení do jiného PC (Download)</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-globe"></i><strong>Krok 14 (Ověření HTTP):</strong> Klikněte na Server, běžte do <em>Services &rarr; HTTP</em> a ujistěte se, že služby HTTP i HTTPS jsou <strong>ON</strong>. Tím server funguje jako skutečný webserver.</li>
-                        <li><i class="fa-brands fa-chrome"></i><strong>Krok 15 (Prohlížeč):</strong> Otevřete PC1 nebo PC2. V záložce <em>Desktop</em> najděte a spusťte aplikaci <strong>Web Browser</strong>.</li>
-                        <li><i class="fa-solid fa-magnifying-glass"></i><strong>Krok 16 (Načtení stránky):</strong> Do horního řádku pro URL adresu zadejte IP adresu serveru: <code>192.168.1.100</code> a klikněte na <strong>Go</strong>.</li>
-                        <li><i class="fa-regular fa-face-smile-beam"></i><strong>Výsledek:</strong> Packet Tracer načte váš soubor <code>index.html</code> a zobrazí váš vzkaz (např. <em>Ahoj Svete!</em>). Kruh se uzavřel!</li>
+                        <li><i class="fa-solid fa-laptop-code"></i><strong>Krok 15 (Jiný klient):</strong> Nyní jděte na druhý počítač (<strong>PC1</strong>). Otevřete v něm <em>Command Prompt</em>.</li>
+                        <li><i class="fa-solid fa-link"></i><strong>Krok 16 (Připojení):</strong> Znovu se spojte se serverem přes <code>ftp 192.168.1.100</code>, zadejte jméno <code>admin</code> a heslo (opět se neukazuje).</li>
+                        <li><i class="fa-solid fa-cloud-arrow-down"></i><strong>Krok 17 (Stažení):</strong> Zadejte příkaz <code>get soubor.txt</code>. Po vypsání hlášky "transfer complete" napište opět <code>quit</code>. Dokázali jsme přenést data po síti!</li>
                     </ul>
                 </div>
             </div>
@@ -1137,18 +1129,17 @@ ul.sub-list li::before {
     </div>
 </div>
 
-<!-- Slide 34: Chytak Cisco Web a File Not found -->
+<!-- Slide 34: Cvičení 3 - Overeni v editoru -->
 <div class="slide-container" id="slide34">
-    <h2 class="slide-title">Troubleshooting: Kde je můj soubor?</h2>
+    <h2 class="slide-title">Cvičení 3: Ověření staženého souboru</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
                 <div class="bullet-list">
                     <ul>
-                        <li><i class="fa-solid fa-folder-open"></i><strong>Na serveru je!</strong> Výpis <code>dir</code> ve vašem FTP ukazuje, že upload proběhl úspěšně. Chyba není ve vás.</li>
-                        <li><i class="fa-solid fa-triangle-exclamation"></i><strong>Omezení simulátoru:</strong> V Packet Traceru je HTTP server oddělený od FTP paměti. Soubory nahrané přes FTP webový server simulátoru prostě "nevidí".</li>
-                        <li><i class="fa-solid fa-server"></i><strong>Reálný svět (Document Root):</strong> Ve skutečnosti to řeší tzv. kořenový adresář webu (např. <code>/var/www/html</code>). Administrátor nastaví FTP účet tak, aby nahrával data <strong>přímo do této webové složky</strong>.</li>
-                        <li><i class="fa-solid fa-graduation-cap"></i><strong>Poučení:</strong> Narazili jste na skvělý příklad z praxe! Oprávnění a správné směrování složek je základem každého webhostingu.</li>
+                        <li><i class="fa-solid fa-folder-open"></i><strong>Krok 18 (Otevření složky):</strong> Pojďme se přesvědčit, že je soubor skutečně fyzicky uložen v druhém počítači. Stále na <strong>PC1</strong> otevřete aplikaci <strong>Text Editor</strong>.</li>
+                        <li><i class="fa-solid fa-file-signature"></i><strong>Krok 19 (Čtení vzkazu):</strong> Zvolte <em>File &rarr; Open</em>. V nabídce byste měli vidět čerstvě stažený soubor <code>soubor.txt</code>. Otevřete ho.</li>
+                        <li><i class="fa-solid fa-face-smile-beam"></i><strong>Výsledek:</strong> Vidíte text "Blah blah blah", který jste před chvílí vymysleli na úplně jiném PC. Gratulujeme, vaše sdílení přes FTP funguje na jedničku!</li>
                     </ul>
                 </div>
             </div>
@@ -1161,19 +1152,113 @@ ul.sub-list li::before {
     </div>
 </div>
 
-<!-- Slide 35: Q&A -->
+<!-- Slide 35: Recap 1 - Architektura -->
 <div class="slide-container" id="slide35">
+    <h2 class="slide-title">Opakování na test: Architektura sítě</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-users"></i><strong>Peer-to-Peer (P2P):</strong> Nejjednodušší síť. Počítače (uzly) jsou si rovny. Každý může data nabízet i stahovat. Vhodné pro malé sítě nebo přímé spojení kabelem.</li>
+                        <li><i class="fa-solid fa-server"></i><strong>Architektura Klient-Server:</strong> Rozdělení rolí. Mnohem efektivnější pro větší sítě a internet.</li>
+                        <li><i class="fa-solid fa-desktop"></i><strong>Klient:</strong> Váš počítač, mobil nebo webový prohlížeč. <em>Žádá</em> o data a služby.</li>
+                        <li><i class="fa-solid fa-database"></i><strong>Server:</strong> Výkonný počítač, který běží 24/7. Data uchovává a <em>poskytuje</em> je klientům (např. FTP server nebo webhosting).</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Klient+Server'" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 36: Recap 2 - Prvky sítě -->
+<div class="slide-container" id="slide36">
+    <h2 class="slide-title">Opakování na test: Síťové prvky</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-circle-xmark"></i><strong>Hub (Rozbočovač):</strong> Zastaralé, "hloupé" zařízení. Když dostane data, rozešle je na úplně všechny porty (všem PC). Vytváří zbytečný provoz a kolize dat.</li>
+                        <li><i class="fa-solid fa-network-wired"></i><strong>Switch (Přepínač):</strong> Inteligentní srdce hvězdicové sítě (to, co jsme používali v Packet Traceru). Rozumí komunikaci na 2. vrstvě.</li>
+                        <li><i class="fa-solid fa-table-list"></i><strong>CAM Tabulka:</strong> Každý switch si vytváří a udržuje tabulku připojených zařízení. Přesně ví, na kterém portu je která MAC adresa <em>(v CLI zjistíme příkazem: <code>show mac address-table</code>)</em>.</li>
+                        <li><i class="fa-solid fa-paper-plane"></i><strong>Chytré odeslání:</strong> Switch pošle data <em>pouze</em> tomu počítači, kterému skutečně patří.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Network_switch_and_patch_panel.jpg/1024px-Network_switch_and_patch_panel.jpg" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Switch'" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 37: Recap 3 - Kabely -->
+<div class="slide-container" id="slide37">
+    <h2 class="slide-title">Opakování na test: Kabeláž a Média</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-plug"></i><strong>Měděný kabel (Kroucená dvojlinka / UTP):</strong> Přenáší elektrické signály. Levný, běžný pro propojení PC a switche, ale má omezený dosah (cca 100m) a může trpět rušením.</li>
+                        <li><i class="fa-solid fa-code-branch"></i><strong>Křížený vs. Přímý kabel:</strong> Přímý se používá pro <em>rozdílná</em> zařízení (PC &harr; Switch). Křížený pro <em>stejná</em> (PC &harr; PC), aby nedošlo ke kolizi vysílacích pinů.</li>
+                        <li><i class="fa-solid fa-lightbulb"></i><strong>Optické vlákno:</strong> Přenáší data pomocí světelných pulzů (fotonů). Extrémně rychlé, bez elektromagnetického rušení a s dosahem přes celé oceány (Transpacifický kabel).</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Kabel%C3%A1%C5%BE'" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 38: Recap 4 - Adresace -->
+<div class="slide-container" id="slide38">
+    <h2 class="slide-title">Opakování na test: Adresace v síti</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-fingerprint"></i><strong>MAC Adresa (Fyzická adresa):</strong> Adresa vypálená výrobcem přímo do hardwaru síťové karty. Je unikátní pro každý adaptér na světě a <em>nemění se</em> (např. <code>00:1A:2B...</code>).</li>
+                        <li><i class="fa-solid fa-map-location-dot"></i><strong>IP Adresa (Logická adresa):</strong> Slouží k orientaci a doručování dat napříč velkými sítěmi a internetem. Funguje podobně jako PSČ na dopise (např. <code>192.168.1.100</code>).</li>
+                        <li><i class="fa-solid fa-shuffle"></i><strong>Změna IP:</strong> Na rozdíl od MAC adresy se IP adresa vašeho PC může měnit podle toho, do jaké sítě se právě připojíte.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80" onerror="this.src='https://placehold.co/800x600/1e293b/38bdf8?text=Adresace'" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 39: Q&A -->
+<div class="slide-container" id="slide39">
     <div class="qa-layout">
-        <h2>Závěr a dotazy</h2>
-        <p>Základní principy fyzického propojení a logické adresace máme za sebou.</p>
-        <p>Nyní je prostor pro vaše technické dotazy a diskusi k probraným základům.</p>
+        <h2>Konec prezentace</h2>
+        <p>Základní principy fyzického propojení a sdílení souborů přes FTP máme za sebou.</p>
+        <p>Hodně štěstí v testu!</p>
     </div>
 </div>
 
 <!-- Ovládací prvky -->
 <div class="controls">
     <button class="nav-btn" id="prevBtn" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
-    <div class="slide-counter"><span id="currentNum">1</span> / <span id="totalNum">35</span></div>
+    <div class="slide-counter"><span id="currentNum">1</span> / <span id="totalNum">39</span></div>
     <button class="nav-btn" id="nextBtn" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
 </div>
 
